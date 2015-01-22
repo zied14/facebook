@@ -1,0 +1,37 @@
+#!/bin/bash
+if [ !-d $HOME/.Trash ]
+then 
+select choix in "Afficher le contenu de la poubelle" "Restaurer un fichier" "Supprimer un fichier" "Fin"
+
+if [ $REPLAY -eq 1 ]
+then 
+for elt in `ls` 
+do 
+	if [ -f $elt ] 
+	then
+	echo "$elt" 
+	fi
+done
+
+else 
+if [ $REPLAY -eq 2 ]
+then 
+ls -l
+fi
+else 
+if [ $REPLAY -eq 3 ]
+then 
+rm $1
+fi
+else 
+if [ $REPLAY -eq 4 ]
+then 
+exit
+fi
+fi
+
+else 
+echo "la repertoire poubelle n'existe pas"
+fi
+
+
